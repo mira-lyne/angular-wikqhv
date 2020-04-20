@@ -15,6 +15,12 @@ export class AuthenticationService {
    const httpOption = { 
      headers: new HttpHeaders({"Content-Type": "application/json"}),
       };
+       let userInfo: any = {
+         "mail": mail,
+         "password": password
+       };
+
+       this.httpClient.post('http://localhost:3000/login', userInfo, httpOption)
    return;
  }
 }
