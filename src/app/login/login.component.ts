@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from'@angular/forms';
 import { Router } from '@angular/router';
+import { AuthenticationService} from '../services/authentication/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -15,14 +16,14 @@ export class LoginComponent implements OnInit {
     returnUrl: string;
     error = '';
 
-    constructor( private formBuilder: FormBuilder,private router: Router,
+    constructor( private formBuilder: FormBuilder,private router: Router, private authenticationService: AuthenticationService
     ){ 
       
     }
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
+            mail: ['', Validators.required],
             password: ['', Validators.required]
         });
 
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
 
         this.loading = true;
         
-        this.authenticationService.login(this.formControls.mail.value. this.formControls.password)
+        this.authenticationService.login(this.formControls.mail.value, this.formControls.password.value)
     }
 
 }
