@@ -20,7 +20,7 @@ export class AuthenticationService {
          "password": password
        };
 
-       this.httpClient.post('http://localhost:3000/login', userInfo, httpOption)
+       this.httpClient.post<any>('http://localhost:3000/login', userInfo, httpOption)
    return;
  }
 }
